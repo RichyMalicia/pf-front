@@ -1,20 +1,22 @@
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import 'pure-react-carousel/dist/react-carousel.es.css'
+
 import {
-  CarouselProvider,
-  Slider,
   ButtonBack,
   ButtonNext,
+  CarouselProvider,
   Slide,
+  Slider,
 } from 'pure-react-carousel'
-import 'pure-react-carousel/dist/react-carousel.es.css'
-import Item from './Item'
-
-import { getAllKpage } from 'features/actions/categorias'
 import { useEffect, useState } from 'react'
+
+import Item from './Item'
+import { Link } from 'react-router-dom'
 import SliderCarousel from './SliderCarousel'
+import axios from 'axios'
+import { getAllKpage } from 'features/actions/categorias'
 import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 const URL = process.env.REACT_APP_URL
 
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
@@ -44,7 +46,7 @@ export default function Carousel({ categoria }) {
 
   return (
     <div className="container mx-auto w-full">
-      <div className="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 w-full">
+      <div className="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
         {/* Carousel for desktop and large size devices */}
         <CarouselProvider
           className="lg:block hidden"
@@ -78,7 +80,7 @@ export default function Carousel({ categoria }) {
                 />
               </svg>
             </ButtonBack>
-            <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden w-full">
+            <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
               <h2 className="text-2xl font-bold  font-comforta-300 text-gray-900 md:text-2xl">
                 {categoria.nombre}
               </h2>

@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getAllPredictivo } from 'features/actions/libros'
+
 import { getAll as print } from 'features/actions/review'
 
 const MasVendidos = () => {
-  const dispatch = useDispatch()
   const { reviews } = useSelector(({ reviewsStore }) => reviewsStore)
   const { totalLibros } = useSelector(({ librosStore }) => librosStore)
   let libros = []
+  
   reviews.forEach((e) => {
     if (e.rating > 2) {
       //3 estrellas o mas
@@ -26,11 +26,6 @@ const MasVendidos = () => {
     .slice(0, cantidadParaMostrar)
     .map((e) => totalLibros.find((p) => p.id === e[0]))
   console.log('DATA', data)
-
-  useEffect(() => {
-    dispatch(getAllPredictivo())
-    dispatch(print(''))
-  }, [dispatch])
 
   return (
     <div className=" 2xl:container 2xl:mx-auto">
